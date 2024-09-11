@@ -1,14 +1,17 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-*********" crossorigin="anonymous" />
 <form id="search" method="{{ method or 'POST' }}" action="{{ url_for('search') }}" role="search">
   <div id="search_header">
-    <a id="search_logo" href="{{ url_for('index') }}" tabindex="0" title="{{ _('Display the front page') }}">
-      <span hidden>SearXNG</span>
-      {% include 'simple/searxng-wordmark.min.svg' without context %}
+    <a id="search_logo" href="{{ url_for('index') }}" tabindex="0" title="{{ _('Go Back') }}">
+      <span hidden>Exyser</span>
+      <img src="{{ url_for('static', filename='images/favicon.png') }}" style="width: 50px; height: 50px;"></img>
     </a>
     <div id="search_view">
       <div class="search_box">
         <input id="q" name="q" type="text" placeholder="{{ _('Search for...') }}" tabindex="1" autocomplete="off" autocapitalize="none" spellcheck="false" autocorrect="off" dir="auto" value="{{ q or '' }}">
         <button id="clear_search" type="reset" aria-label="{{ _('clear') }}" class="hide_if_nojs"><span>{{ icon_big('close') }}</span><span class="show_if_nojs">{{ _('clear') }}</span></button>
+        
         <button id="send_search" type="submit" {%- if search_on_category_select -%}name="category_{{ selected_categories[0]|replace(' ', '_') }}"{%- endif -%} aria-label="{{ _('search') }}"><span class="hide_if_nojs">{{ icon_big('search-outline') }}</span><span class="show_if_nojs">{{ _('search') }}</span></button>
+        <button id="speak_search" type="button" aria-label="{{ _('speak') }}" onclick="startSpeechRecognition()"><span class="hide_if_nojs" ><i class="fas fa-microphone"></i></span><span class="show_if_nojs">{{ _('speak') }}</span></button>
       </div>
     </div>
     {% set display_tooltip = true %}
@@ -22,3 +25,28 @@
   <input type="hidden" name="theme" value="{{ theme }}" >
   {% if timeout_limit %}<input type="hidden" name="timeout_limit" value="{{ timeout_limit|e }}" >{% endif %}
 </form>
+
+<script>
+  function startSpeechRecognition() {
+    const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      document.getElementById('q').value = transcript;
+    }
+    recognition.start();
+  }
+</script>
+<style>
+  #speak_search {
+  border-radius: 20px; /* Adjust the border-radius to your preference for curved corners */
+  background-color: #2b2e36; /* Set the background color to black */
+  border: none; /* Remove any default border */
+  padding: 10px 20px; /* Adjust padding as needed */
+  color: white;
+}
+#speak_search:hover {
+  background-color: #F92B65;
+  color: black;
+}
+</style>

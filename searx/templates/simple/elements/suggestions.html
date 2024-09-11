@@ -1,6 +1,6 @@
 <div id="suggestions" role="complementary" aria-labelledby="suggestions-title">
   <details class="sidebar-collapsable">
-    <summary class="title" id="suggestions-title">{{ _('Suggestions') }}</summary>
+    <summary class="title" id="suggestions-title">{{ _('More Like This') }}</summary>
     <div class="wrapper">
       {%- for suggestion in suggestions -%}
         <form method="{{ method or 'POST' }}" action="{{ url_for('search') }}">

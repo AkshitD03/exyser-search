@@ -796,11 +796,11 @@ def search():
     )
 
 
-@app.route('/about', methods=['GET'])
+@app.route('/about')
 def about():
     """Redirect to about page"""
     # custom_url_for is going to add the locale
-    return redirect(custom_url_for('info', pagename='about'))
+    render_template('about.html')
 
 
 @app.route('/info/<locale>/<pagename>', methods=['GET'])

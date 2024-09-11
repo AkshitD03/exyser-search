@@ -1,79 +1,26 @@
-# About SearXNG
+# About Exyser Search Engine
 
-SearXNG is a [metasearch engine], aggregating the results of other
-{{link('search engines', 'preferences')}} while not storing information about
-its users.
+Welcome to the world of Exyser, a revolutionary search engine crafted by Exycorp in India. Get ready to embark on an extraordinary journey through the digital realm like never before.
 
-The SearXNG project is driven by an open community, come join us on Matrix if
-you have questions or just want to chat about SearXNG at [#searxng:matrix.org]
+# What is Exyser?
+Exyser isn't just another search engine; it's a gateway to boundless exploration and discovery. Powered by cutting-edge technology and fueled by the passion to redefine the search experience, Exyser brings together innovation, precision, and user-centric design to deliver unparalleled results.
 
-Make SearXNG better.
+# Why Exyser?
+At Exycorp, we believe that searching the web should be an exhilarating adventure, not a mundane task. With Exyser, you'll unlock a world of possibilities right at your fingertips. Say goodbye to endless scrolling and irrelevant results – Exyser prioritizes accuracy and relevance, ensuring that every search query leads you to exactly what you need, precisely when you need it.
 
-- You can improve SearXNG translations at [Weblate], or...
-- Track development, send contributions, and report issues at [SearXNG sources].
-- To get further information, visit SearXNG's project documentation at [SearXNG
-  docs].
+# Key Features
 
-## Why use it?
+Lightning-Fast Speed
 
-- SearXNG may not offer you as personalized results as Google, but it doesn't
-  generate a profile about you.
-- SearXNG doesn't care about what you search for, never shares anything with a
-  third-party, and it can't be used to compromise you.
-- SearXNG is free software, the code is 100% open, and everyone is welcome to
-  make it better.
+Experience lightning-fast search results with Exyser. Our advanced algorithms work tirelessly to fetch information at blazing speeds, so you can find what you're looking for in record time.
 
-If you do care about privacy, want to be a conscious user, or otherwise believe
-in digital freedom, make SearXNG your default search engine or run it on your
-own server!
+Intelligent Suggestions
 
-## How do I set it as the default search engine?
+Discover new possibilities with Exyser's intelligent suggestion feature. Whether you're searching for the latest news, planning your next vacation, or exploring your passions, Exyser anticipates your needs and offers personalized recommendations to enhance your browsing experience.
 
-SearXNG supports [OpenSearch].  For more information on changing your default
-search engine, see your browser's documentation:
+Privacy First
 
-- [Firefox]
-- [Microsoft Edge] - Behind the link, you will also find some useful instructions
-  for Chrome and Safari.
-- [Chromium]-based browsers only add websites that the user navigates to without
-  a path.
+Your privacy matters to us. With Exyser, you can search the web with confidence, knowing that your data is safe and secure. We adhere to strict privacy standards, ensuring that your personal information remains protected at all times.
 
-When adding a search engine, there must be no duplicates with the same name.  If
-you encounter a problem where you cannot add the search engine, you can either:
-
-- remove the duplicate (default name: SearXNG) or
-- contact the owner to give the instance a different name than the default.
-
-## How does it work?
-
-SearXNG is a fork from the well-known [searx] [metasearch engine] which was
-inspired by the [Seeks project].  It provides basic privacy by mixing your
-queries with searches on other platforms without storing search data.  SearXNG
-can be added to your browser's search bar; moreover, it can be set as the
-default search engine.
-
-The {{link('stats page', 'stats')}} contains some useful anonymous usage
-statistics about the engines used.
-
-## How can I make it my own?
-
-SearXNG appreciates your concern regarding logs, so take the code from the
-[SearXNG sources] and run it yourself!
-
-Add your instance to this [list of public
-instances]({{get_setting('brand.public_instances')}}) to help other people
-reclaim their privacy and make the internet freer.  The more decentralized the
-internet is, the more freedom we have!
-
-
-[SearXNG sources]: {{GIT_URL}}
-[#searxng:matrix.org]: https://matrix.to/#/#searxng:matrix.org
-[SearXNG docs]: {{get_setting('brand.docs_url')}}
-[searx]: https://github.com/searx/searx
-[metasearch engine]: https://en.wikipedia.org/wiki/Metasearch_engine
-[Weblate]: https://translate.codeberg.org/projects/searxng/
-[Seeks project]: https://beniz.github.io/seeks/
-[OpenSearch]: https://github.com/dewitt/opensearch/blob/master/opensearch-1-1-draft-6.md
-[Firefox]: https://support.mozilla.org/en-US/kb/add-or-remove-search-engine-firefox
-[Microsoft Edge]: https://support.microsoft.com/en-us/help/4028574/microsoft-edge-change-the-default-search-engine
-[Chromium]: https://www.chromium.org/tab-to-search
+# Launch Date
+Get ready to dive into the world of Exyser – we're thrilled to announce that our official launch date is set for June 15, 2024. Mark your calendars and join us as we embark on this exciting journey together.

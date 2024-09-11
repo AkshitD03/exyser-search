@@ -8,7 +8,7 @@
     {% endfor %}
 {%- endmacro %}
 {% block title %}{% if query_in_title %}{{- q|e }} - {% endif %}{% endblock %}
-{% block meta %}<link rel="alternate" type="application/rss+xml" title="Searx search: {{ q|e }}" href="{{ url_for('search', _external=True) }}?q={{ q|urlencode }}&amp;categories={{ selected_categories|join(",") | replace(' ','+') }}&amp;pageno={{ pageno }}&amp;time_range={{ time_range }}&amp;language={{ current_language }}&amp;safesearch={{ safesearch }}&amp;format=rss">{% endblock %}
+{% block meta %}<link rel="alternate" type="application/rss+xml" title="Exyser search: {{ q|e }}" href="{{ url_for('search', _external=True) }}?q={{ q|urlencode }}&amp;categories={{ selected_categories|join(",") | replace(' ','+') }}&amp;pageno={{ pageno }}&amp;time_range={{ time_range }}&amp;language={{ current_language }}&amp;safesearch={{ safesearch }}&amp;format=rss">{% endblock %}
 {% block content %}
 {% include 'simple/search.html' %}
 
@@ -19,6 +19,61 @@
 {% endif %}
 
 <div id="results" class="{{ only_template }}">
+  <p id="query">
+    {{ q|urlencode }}
+  </p>
+ <script>
+document.addEventListener("DOMContentLoaded", function() {
+  var queryElement = document.getElementById("query");
+  var originalQuery = queryElement.innerHTML;
+  var decodedQuery = decodeURIComponent(originalQuery);
+  var replacedQuery = decodedQuery.replace(/%3F/g, "?");
+
+  // Check if the replaced query contains specific phrases with one or two words before and after
+  var searchPhrases = [" to ", "hotels near me", "city"]; // Phrases to search for
+  var searchQuery = null;
+
+  searchPhrases.forEach(function(phrase) {
+    var regex;
+    if (phrase.trim() === "to") {
+      regex = new RegExp("\\b(?:\\w+\\s+\\w+\\s+)?\\b" + phrase + "\\b(?:\\s+\\w+\\s+\\w+)?\\b", "i");
+    } else if (phrase.trim() === "hotels near me") {
+      regex = new RegExp("\\b(?:\\w+\\s+\\w+)?\\b" + phrase + "\\b", "i");
+    } else {
+      regex = new RegExp("\\b(?:\\w+\\s+\\w+)?\\b" + phrase + "\\b(?:\\s+\\w+\\s+\\w+)?\\b", "i");
+    }
+    if (regex.test(replacedQuery)) {
+      searchQuery = replacedQuery;
+    }
+  });
+
+  // If a search query is found, create a Google Maps URL or load the map directly
+  if (searchQuery !== null) {
+    if (searchQuery.includes(" city")) {
+      var location = searchQuery.replace(" city", "");
+      loadMap(location);
+    } else {
+      var googleMapsURL = "https://www.google.com/maps/search/" + encodeURIComponent(searchQuery);
+      var linkElement = document.createElement("a");
+      linkElement.href = googleMapsURL;
+      linkElement.target = "_blank";
+      linkElement.textContent = "View on Google Maps";
+      queryElement.parentNode.appendChild(linkElement);
+    }
+  }
+
+  queryElement.innerHTML = replacedQuery;
+});
+
+function loadMap(location) {
+  // Open the map with the provided location
+  var mapURL = "file:///D:/xampp/htdocs/engine/test.html?location=" + encodeURIComponent(location);
+  window.location.href = mapURL;
+}
+
+ </script>
+  
+
     {% if answers -%}
     <div id="answers" role="complementary" aria-labelledby="answers-title"><h4 class="title" id="answers-title">{{ _('Answers') }} : </h4>
         {%- for answer in answers.values() -%}
@@ -41,7 +96,7 @@
         {%- if infoboxes -%}
           <div id="infoboxes">
             <details open class="sidebar-collapsable">
-              <summary class="title">{{ _('Info') }}</summary>
+              <summary class="title">{{ _('More Info') }}</summary>
               {%- for infobox in infoboxes -%}
                 {%- include 'simple/elements/infobox.html' -%}
               {%- endfor -%}
@@ -52,18 +107,18 @@
         {%- if suggestions -%}
           {%- include 'simple/elements/suggestions.html' -%}
         {%- endif -%}
-
+<!-- 
         {%- if method == 'POST' -%}
           {%- include 'simple/elements/search_url.html' -%}
-        {%- endif -%}
+        {%- endif -%} -->
 
-        {%- if unresponsive_engines -%}
+        <!-- {%- if unresponsive_engines -%}
           {%- include 'simple/elements/engines_msg.html' -%}
-	{%- endif -%}
-
+	{%- endif -%} -->
+<!-- 
         {%- if search_formats -%}
           {%- include 'simple/elements/apis.html' -%}
-        {%- endif -%}
+        {%- endif -%} -->
 
         <div id="sidebar-end-collapsable"></div>
     </div>

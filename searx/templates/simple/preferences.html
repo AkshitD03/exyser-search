@@ -153,7 +153,7 @@
 
 {%- block content -%}
 
-  <h1>{{ _('Preferences') }}</h1>
+  <h1>{{ _('Settings') }}</h1>
 
   <form id="search_form" method="post" action="{{ url_for('preferences') }}" autocomplete="off">
     {{- tabs_open() -}}
@@ -161,26 +161,26 @@
 
     {{- tab_header('maintab', 'general', _('General'), True) -}}
     {%- if 'categories' not in locked_preferences -%}
-      <fieldset>
+      <!-- <fieldset>
         <legend>{{- _('Default categories') -}}</legend>
         {% set display_tooltip = false %}
         {% include 'simple/categories.html' %}
-      </fieldset>
+      </fieldset> -->
     {%- endif -%}
     {%- if 'language' not in locked_preferences -%}
       {%- include 'simple/preferences/language.html' -%}
     {% endif %}
-    {%- if 'autocomplete' not in locked_preferences -%}
+    <!-- {%- if 'autocomplete' not in locked_preferences -%}
       {%- include 'simple/preferences/autocomplete.html' -%}
-    {%- endif -%}
+    {%- endif -%} -->
     {% if 'safesearch' not in locked_preferences %}
       {%- include 'simple/preferences/safesearch.html' -%}
     {%- endif -%}
-    {{- plugin_preferences('general') -}}
-    {%- if 'doi_resolver' not in locked_preferences %}
+    <!-- {{- plugin_preferences('general') -}} -->
+    <!-- {%- if 'doi_resolver' not in locked_preferences %}
       {%- include 'simple/preferences/doi_resolver.html' -%}
-    {%- endif -%}
-    {%- include 'simple/preferences/tokens.html' -%}
+    {%- endif -%} -->
+    <!-- {%- include 'simple/preferences/tokens.html' -%} -->
     {{- tab_footer() -}}
 
 
@@ -206,9 +206,9 @@
 
 
     {{- tab_header('maintab', 'privacy', _('Privacy')) -}}
-    {%- if 'method' not in locked_preferences -%}
+    <!-- {%- if 'method' not in locked_preferences -%}
       {%- include 'simple/preferences/method.html' -%}
-    {%- endif -%}
+    {%- endif -%} -->
     {%- if 'image_proxy' not in locked_preferences -%}
       {%- include 'simple/preferences/image_proxy.html' -%}
     {%- endif -%}
@@ -218,14 +218,14 @@
     {{- plugin_preferences('privacy') -}}
     {{- tab_footer() -}}
 
-    {{- tab_header('maintab', 'engines', _('Engines')) -}}
+    <!-- {{- tab_header('maintab', 'engines', _('Engines')) -}}
     <p>
       {{- _('Currently used search engines') -}}
     </p>
     {{- tabs_open() -}}
     {%- include 'simple/preferences/engines.html' -%}
     {{- tabs_close() -}}
-    {{- tab_footer() -}}
+    {{- tab_footer() -}} -->
 
 
     {{- tab_header('maintab', 'query', _('Special Queries')) -}}
