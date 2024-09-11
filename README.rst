@@ -1,1 +1,1 @@
-This is a Supe private search engine named Exyser.
+This is a Super private search engine named Exyser.
